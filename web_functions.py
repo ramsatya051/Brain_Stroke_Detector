@@ -5,24 +5,29 @@ import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 import streamlit as st
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
 
-@st.cache()
+@st.cache_data()
 def load_data():
     """This function returns the preprocessed data"""
 
     # Load the Diabetes dataset into DataFrame.
     df = pd.read_csv('BS.csv')
 
-    # Rename the column names in the DataFrame.
-    
+    df['gender'] = LabelEncoder().fit_transform(df['gender'])
+    df['work_type'] = LabelEncoder().fit_transform(df['work_type'])
+    df['ever_married'] = LabelEncoder().fit_transform(df['ever_married'])
+    df['residence_type'] = LabelEncoder().fit_transform(df['residence_type'])
+
     # Perform feature and target split
-    X = df[["gender","age","hypertension","heart_disease","ever_married","work_type","Residence_type","avg_glucose_level","bmi"]]
-    y = df['stroke']
+    X = df[["gender","age","hypertension","heart_disease","ever_married","work_type","residence_type","avg_glucose_level","bmi"]]
+    y = df["stroke"]
 
     return df, X, y
 
-@st.cache()
+@st.cache_resource()
 def train_model(X, y):
     """This function trains the model and return the model and model score"""
     # Create the model
@@ -33,10 +38,13 @@ def train_model(X, y):
             min_samples_split=2, min_weight_fraction_leaf=0.0,
             random_state=42, splitter='best'
         )
+    
+    x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.2)
+
     # Fit the data on model
-    model.fit(X, y)
+    model.fit(x_train, y_train)
     # Get the model score
-    score = model.score(X, y)
+    score = model.score(x_test, y_test)
 
     # Return the values
     return model, score

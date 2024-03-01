@@ -48,7 +48,7 @@ def app(df, X, y):
     D = st.slider("Heart Diseases", int(df["heart_disease"].min()), int(df["heart_disease"].max()))
     E = st.slider("Married", int(df["ever_married"].min()), int(df["ever_married"].max()))
     F = st.slider("Work Type", int(df["work_type"].min()), int(df["work_type"].max()))
-    G = st.slider("Residence type", int(df["Residence_type"].min()), int(df["Residence_type"].max()))
+    G = st.slider("Residence type", int(df["residence_type"].min()), int(df["residence_type"].max()))
     H = st.slider("Average Glucose Level", int(df["avg_glucose_level"].min()), int(df["avg_glucose_level"].max()))
     I = st.slider("Basal Metabolic Index (BMI)", int(df["bmi"].min()), int(df["bmi"].max()))
     
