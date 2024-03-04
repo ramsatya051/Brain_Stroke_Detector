@@ -7,6 +7,7 @@ from sklearn.tree import DecisionTreeClassifier
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
 
 @st.cache_data()
@@ -32,13 +33,14 @@ def load_data():
 def train_model(X, y):
     """This function trains the model and return the model and model score"""
     # Create the model
-    model = DecisionTreeClassifier(
+    '''model = DecisionTreeClassifier(
             ccp_alpha=0.0, class_weight=None, criterion='entropy',
             max_depth=4, max_features=None, max_leaf_nodes=None,
             min_impurity_decrease=0.0, min_samples_leaf=1, 
             min_samples_split=2, min_weight_fraction_leaf=0.0,
             random_state=42, splitter='best'
-        )
+        )'''
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
     
     x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.2)
 
