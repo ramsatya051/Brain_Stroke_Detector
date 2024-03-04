@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 def load_data():
     """This function returns the preprocessed data"""
 
-    # Load the Diabetes dataset into DataFrame.
+    # Load the dataset into DataFrame.
     df = pd.read_csv('healthcare_data_set_new.csv')
     df.dropna(inplace=True)
     df['gender'] = LabelEncoder().fit_transform(df['gender'])
