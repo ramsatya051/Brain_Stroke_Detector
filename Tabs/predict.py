@@ -26,16 +26,22 @@ def app(df, X, y):
         \n 0 -> Absent or False
         \n 1 -> Present or True\n 
         
-        \nWork types:\n
-        0 -> children 
-        1 -> Government Job 
-        2 -> Private Job 
-        3 -> Self-employed
-        4 -> Unemployed
+        \nWork types:\n          
+        0 -> Government Job 
+        1 -> Never worked
+        2 -> Private Job
+        3-> Self-employed
+        4-> Children
 
         \nResidence Type:\n 
         1 -> Urban
-        0 -> Rural""")
+        0 -> Rural
+
+        \nSmoking Status:\n          
+        0 -> Unknow
+        1 -> Formerly smoked
+        2 -> Never smoked
+        3-> Smokes""")
     
     # Take feature input from the user
     # Add a subheader
@@ -48,12 +54,13 @@ def app(df, X, y):
     D = st.slider("Heart Diseases", int(df["heart_disease"].min()), int(df["heart_disease"].max()))
     E = st.slider("Married", int(df["ever_married"].min()), int(df["ever_married"].max()))
     F = st.slider("Work Type", int(df["work_type"].min()), int(df["work_type"].max()))
-    G = st.slider("Residence type", int(df["residence_type"].min()), int(df["residence_type"].max()))
+    G = st.slider("Residence type", int(df["Residence_type"].min()), int(df["Residence_type"].max()))
     H = st.slider("Average Glucose Level", int(df["avg_glucose_level"].min()), int(df["avg_glucose_level"].max()))
     I = st.slider("Basal Metabolic Index (BMI)", int(df["bmi"].min()), int(df["bmi"].max()))
+    J = st.slider("Smoking Status",int(df["smoking_status"].min()),int(df["smoking_status"].max()))
     
     # Create a list to store all the features
-    features = [A,B,C,D,E,F,G,H,I]
+    features = [A,B,C,D,E,F,G,H,I,J]
 
     # Create a button to predict
     if st.button("Predict"):

@@ -14,15 +14,16 @@ def load_data():
     """This function returns the preprocessed data"""
 
     # Load the Diabetes dataset into DataFrame.
-    df = pd.read_csv('BS.csv')
-
+    df = pd.read_csv('healthcare_data_set_new.csv')
+    df.dropna(inplace=True)
     df['gender'] = LabelEncoder().fit_transform(df['gender'])
     df['work_type'] = LabelEncoder().fit_transform(df['work_type'])
     df['ever_married'] = LabelEncoder().fit_transform(df['ever_married'])
-    df['residence_type'] = LabelEncoder().fit_transform(df['residence_type'])
+    df['Residence_type'] = LabelEncoder().fit_transform(df['Residence_type'])
+    df['smoking_status'] = LabelEncoder().fit_transform(df['smoking_status'])
 
     # Perform feature and target split
-    X = df[["gender","age","hypertension","heart_disease","ever_married","work_type","residence_type","avg_glucose_level","bmi"]]
+    X = df[["gender","age","hypertension","heart_disease","ever_married","work_type","Residence_type","avg_glucose_level","bmi","smoking_status"]]
     y = df["stroke"]
 
     return df, X, y

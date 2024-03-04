@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 
-df = pd.read_csv("brain_stroke_dataset_more_accurate.csv")
+df = pd.read_csv("healthcare_data_set_new.csv")
 
 print(df['gender'].unique())
 df['gender'] = LabelEncoder().fit_transform(df['gender'])
@@ -18,9 +18,13 @@ print(df['ever_married'].unique())
 df['ever_married'] = LabelEncoder().fit_transform(df['ever_married'])
 print(df['ever_married'].unique())
 
-print(df['residence_type'].unique())
-df['residence_type'] = LabelEncoder().fit_transform(df['residence_type'])
-print(df['residence_type'].unique())
+print(df['Residence_type'].unique())
+df['Residence_type'] = LabelEncoder().fit_transform(df['Residence_type'])
+print(df['Residence_type'].unique())
+
+print(df['smoking_status'].unique())
+df['smoking_status'] = LabelEncoder().fit_transform(df['smoking_status'])
+print(df['smoking_status'].unique())
 
 print(df.head(100))
 
