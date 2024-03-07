@@ -50,11 +50,11 @@ def app(df, X, y):
 
     if st.checkbox("Plot Decision Tree"):
         model, score = train_model(X, y)
-        # Export decision tree in dot format and store in 'dot_data' variable.
-        dot_data = tree.export_graphviz(
-            decision_tree=model, max_depth=3, out_file=None, filled=True, rounded=True,
-            feature_names=X.columns, class_names=['0', '1']
-        )
-        # Plot the decision tree using the 'graphviz_chart' function of the 'streamlit' module.
-        st.graphviz_chart(dot_data)
+    
+        x_train, x_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+        
+    
+        plt.figure(figsize=(15,10))
+        tree.plot_tree(model.estimators_[1],filled=True)
+        st.pyplot()
 
