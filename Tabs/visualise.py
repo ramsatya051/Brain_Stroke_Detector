@@ -7,6 +7,7 @@ import seaborn as sns
 '''from sklearn.metrics import plot_confusion_matrix'''
 from sklearn import tree
 import streamlit as st
+from sklearn.model_selection import train_test_split
 
 
 # Import necessary functions from web_functions
